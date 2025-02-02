@@ -1,3 +1,5 @@
+import math
+
 def intersection_box( xyxy_1, xyxy_2 ):
     xyxy = [
             max( xyxy_1[0], xyxy_2[0] ),
@@ -50,3 +52,29 @@ def condense_boxes_single( in_boxes ):
                 by_class[box[1]].append( box )
 
     return( by_class )
+
+def expand_boxes( in_boxes, percentage):
+    for box in in_boxes:
+        w = box[4] - box[2]
+        h = box[5] - box[3]
+        w_diff = math.floor(percentage*w/200)
+        h_diff = math.floor(percentage*h/200)
+        box[2] = box[2] - w_diff
+        box[3] = box[3] - h_diff
+        box[4] = box[4] + w_diff
+        box[5] = box[5] + h_diff
+    return in_boxes
+
+# Bounds the size of the boxes to be within the frame
+def expand_boxes_bounded( in_boxes, percentage, frame):
+    for box in in_boxes:
+        w = box[4] - box[2]
+        h = box[5] - box[3]
+        w_diff = math.floor(percentage*w/200)
+        h_diff = math.floor(percentage*h/200)
+        frame_h, frame_w, _ = frame.shape
+        box[2] = max(0, box[2] - w_diff)
+        box[3] = max(0, box[3] - h_diff)
+        box[4] = min(frame_w, box[4] + w_diff)
+        box[5] = min(frame_h, box[5] + h_diff)
+    return in_boxes
