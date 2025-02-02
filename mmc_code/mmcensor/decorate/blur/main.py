@@ -70,7 +70,10 @@ class decorator:
         self.h_entry.delete(0,tk.END)
         self.h_entry.insert(0,str(self.expand))
         self.h_entry.grid(row=1,column=3)
-        tk.Checkbutton( frame, text="Circular",onvalue=True, offvalue=False, variable=self.circular_var).grid(row=1,column=4)
+        self.circle_entry = tk.Checkbutton( frame, text="Circular",onvalue=True, offvalue=False, variable=self.circular_var)
+        if self.circular:
+            self.circle_entry.select()
+        self.circle_entry.grid(row=1,column=4)
 
         self.feature_selector = feature_selector()
 

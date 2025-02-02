@@ -34,7 +34,7 @@ class decorator:
         self.strength = settings['strength']
 
     def short_name( self ):
-        return 'pixel'
+        return 'pixel_body'
 
     def short_desc( self ):
         return '%d classes, strength %d'%(len(self.classes),self.strength)

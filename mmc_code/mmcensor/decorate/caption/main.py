@@ -129,7 +129,10 @@ class decorator:
         self.b_entry.delete(0,tk.END)
         self.b_entry.insert(0,str(self.color[2]))
         self.b_entry.grid(row=1,column=5)
-        tk.Checkbutton( frame, text="Randomize",onvalue=True, offvalue=False, variable=self.rd).grid(row=1,column=6)
+        self.random_entry = tk.Checkbutton( frame, text="Randomize",onvalue=True, offvalue=False, variable=self.rd)
+        if self.randomize:
+            self.random_entry.select()
+        self.random_entry.grid(row=1,column=6)
 
         self.feature_selector = feature_selector()
 

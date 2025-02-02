@@ -61,12 +61,15 @@ class decorator:
         self.strength_entry.delete(0,tk.END)
         self.strength_entry.insert(0,str(self.strength))
         self.strength_entry.grid(row=1,column=3)
-        tk.Label( frame, text="harshness").grid(row=2,column=0)
+        tk.Label( frame, text="Expand").grid(row=2,column=0)
         self.h_entry = tk.Entry( frame, textvariable=self.expand_var )
         self.h_entry.delete(0,tk.END)
         self.h_entry.insert(0,str(self.expand))
         self.h_entry.grid(row=2,column=1)
-        tk.Checkbutton( frame, text="Soft",onvalue=True, offvalue=False, variable=self.soft_var).grid(row=2,column=2)
+        self.soft_entry = tk.Checkbutton( frame, text="Soft",onvalue=True, offvalue=False, variable=self.soft_var)
+        if self.soft:
+            self.soft_entry.select()
+        self.soft_entry.grid(row=2,column=2)
 
         self.feature_selector = feature_selector()
 
