@@ -4,6 +4,7 @@ import cv2
 import math
 import random
 import numpy as np
+import os
 from PIL import ImageFont, ImageDraw, Image 
 from mmcensor.decorate.decorator_utils import feature_selector
 
@@ -36,9 +37,10 @@ class decorator:
 
         self.text = "Not for BETA boys like you!"
 
-        self.captionsPussy = ["As IF you would EVER get pussy, loser!", "Her pussy belongs to REAL men", "Made for BBC", "You couldn't please her, no point in dreaming about it"]
-        self.captionsBoobs = ["No boobs for beta bitches", "Too beautiful for your eyes", "Her soft tits are not for you", "You will never get to see real boobs"]
-        self.captionsGeneral = ["Stop it you perv!", "Not for BETA boys like you!", "Real men only", "Goddesses only want BBC", "This image violates the BETA rules.", "you are such a degenerate", "You disgust me", "She would never hang out with a pathetic boy like you", "That's not for someone like you", "She's way out of your league, you're pathetic", "You'll never get anywhere near that, loser. Know your place", "Stop wasting my time, you shrimpdick loser"]
+        dirname = os.path.dirname(__file__)
+        self.captionsP = open("mmcensor/decorate/caption/Captions/CaptionP.txt", "r").read().splitlines()
+        self.captionsB = open("mmcensor/decorate/caption/Captions/CaptionB.txt", "r").read().splitlines()
+        self.captionsGeneral = open("mmcensor/decorate/caption/Captions/CaptionGeneral.txt", "r").read().splitlines()
         return
 
     def decorate( self, img, boxes ):
@@ -68,9 +70,9 @@ class decorator:
     
     def randomizeCaption( self ):
         if self.last_class == 3:
-            self.text = random.choice(self.captionsBoobs)
+            self.text = random.choice(self.captionsB)
         if self.last_class == 4:
-            self.text = random.choice(self.captionsPussy)
+            self.text = random.choice(self.captionsP)
         if random.randrange(2) == 1:
             self.text = random.choice(self.captionsGeneral) 
         self.font = ImageFont.truetype("mmcensor/fonts/" + random.choice(self.fonts), self.fontSize)
