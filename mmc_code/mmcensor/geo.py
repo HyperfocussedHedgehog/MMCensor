@@ -53,6 +53,16 @@ def condense_boxes_single( in_boxes ):
 
     return( by_class )
 
+def condense_all( in_boxes ):
+    boxes = in_boxes.copy()
+    bigbox = None
+    if len(boxes) != 0:
+        bigbox = boxes[0]
+        for box in boxes:
+            bigbox[2:6] = union_box(bigbox[2:6], box[2:6])
+            bigbox[0] = max( bigbox[0], box[0])
+    return bigbox
+
 def expand_boxes( in_boxes, percentage):
     for box in in_boxes:
         w = box[4] - box[2]
