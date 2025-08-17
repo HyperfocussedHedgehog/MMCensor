@@ -167,8 +167,10 @@ neuralnet_models/640m-2560.engine
 neuralnet_models/640m-640.engine
 neuralnet_models/640m.onnx
 /winpython-tensorrt
+/winpython-tensorrt-50xx
 uninstall-tensorrt.bat
 run-tensorrt.bat
+install-log*
 install-log-tensorrt.txt
 install-log-tensorrt-verbose.txt
 install-log-directml-verbose.txt

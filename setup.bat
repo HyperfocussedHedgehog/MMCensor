@@ -23,14 +23,18 @@ ECHO 5. If for some reason none of the above options work, enter 5 to install
 ECHO a vanilla PyTorch CPU backend, which is the slowest but most compatible
 ECHO backend.
 echo.
+ECHO 6. If you have a NVidia 50xx Graphics Card,
+ECHO enter 6 to install the latest PyTorch and tensorrt backend.
+echo.
 set okay=0
-set /p installChoice=Enter a number (1, 2, 3, 4, or 5):
+set /p installChoice=Enter a number (1, 2, 3, 4, 5, or 6):
 echo.
 if %installChoice%==1 set okay=1 && call "./bat_files/setup-tensorrt.bat" 2>&1 | "./bat_files/tee.bat" install-log-tensorrt.txt
 if %installChoice%==2 set okay=1 && call "./bat_files/setup-pytorch-cuda.bat" 2>&1 | "./bat_files/tee.bat" install-log-pytorch-cuda.txt
 if %installChoice%==3 set okay=1 && call "./bat_files/setup-directml.bat" 2>&1 | "./bat_files/tee.bat" install-log-directml.txt
 if %installChoice%==4 set okay=1 && call "./bat_files/setup-openvino.bat" 2>&1 | "./bat_files/tee.bat" install-log-openvino.txt
 if %installChoice%==5 set okay=1 && call "./bat_files/setup-pytorch-cpu.bat" 2>&1 | "./bat_files/tee.bat" install-log-pytorch-cpu.txt
-if %okay%==0 echo Please enter 1, 2, 3, 4, or 5.  You did not enter a valid choice.
+if %installChoice%==6 set okay=1 && call "./bat_files/setup-tensorrt-50xx.bat" 2>&1 | "./bat_files/tee.bat" install-log-tensorrt-50xx.txt
+if %okay%==0 echo Please enter 1, 2, 3, 4, 5, or 6.  You did not enter a valid choice.
 echo.
 set /p dummy="Press enter to continue..."
