@@ -192,7 +192,3 @@ uninstall-openvino.bat
 /winpython-pytorch-cpu
 run-pytorch-cpu.bat
 uninstall-pytorch-cpu.bat
-mmc_code/mmcensor/decorate/caption/Captions/CaptionB.txt
-mmc_code/mmcensor/decorate/caption/Captions/CaptionGeneral.txt
-mmc_code/mmcensor/decorate/caption/Captions/CaptionP.txt
-mmc_code/mmcensor/decorate/caption/Captions.zip
