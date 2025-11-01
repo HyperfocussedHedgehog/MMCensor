@@ -192,3 +192,4 @@ uninstall-openvino.bat
 /winpython-pytorch-cpu
 run-pytorch-cpu.bat
 uninstall-pytorch-cpu.bat
+mmc_code/saved_settings.json

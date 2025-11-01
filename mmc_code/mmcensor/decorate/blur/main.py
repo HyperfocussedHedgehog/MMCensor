@@ -30,6 +30,8 @@ class decorator:
                     hr = h>>1
                     factor = 2 * math.ceil( self.strength * min( w,h ) / 100 /2 ) + 1
                     region = img[box[3]:box[5],box[2]:box[4]]
+                    if region.size == 0:
+                        continue
                     blur = cv2.blur( region, (factor,factor), cv2.BORDER_DEFAULT )
                     if self.circular:
                         mask = np.zeros(region.shape, np.uint8)
